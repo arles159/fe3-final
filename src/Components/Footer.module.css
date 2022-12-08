@@ -1,0 +1,31 @@
+.iconsDark {
+filter: brightness(0) invert(1);
+}
+.dhLogo {
+max-width: 50%;
+}
+.icon {
+max-width: 2rem;
+height: auto;
+}.footerWrapper {
+margin-top: auto;
+}
+.top {
+border: none;
+color: rgb(0, 0, 0);
+margin-top: 2rem;
+width: 100%;
+text-transform: uppercase;
+padding: 1rem;
+background: #f2d21d;
+}
+.footer {
+padding: 2rem 0;
+}
+.icons {
+gap: 1rem;
+filter: brightness(0);
+display: flex;
+justify-content: flex-end;
+align-items: flex-start;
+}

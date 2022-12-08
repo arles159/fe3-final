@@ -1,14 +1,33 @@
-import { createContext } from "react";
-
-export const initialState = {theme: "", data: []}
+import { createContext, useMemo, useReducer } from "react";
+import { actions, initialState, reducer } from "./reducer.service";
 
 export const ContextGlobal = createContext(undefined);
 
 export const ContextProvider = ({ children }) => {
-  //Aqui deberan implementar la logica propia del Context, utilizando el hook useMemo
+  const [state, dispatch] = useReducer(reducer, initialState);
+
+  const providerState = useMemo(
+    () => ({
+      theme: state.theme,
+      login: state.login,
+      setDarkTheme: () => {
+        dispatch({ type: actions.SET_THEME_DARK });
+      },
+      setLightTheme: () => {
+        dispatch({ type: actions.SET_THEME_LIGHT });
+      },
+      setLogin: () => {
+        dispatch({ type: actions.SET_LOGIN });
+      },
+      setLogout: () => {
+        dispatch({ type: actions.SET_LOGOUT });
+      },
+    }),
+    [state.login, state.theme]
+  );
 
   return (
-    <ContextGlobal.Provider value={{}}>
+    <ContextGlobal.Provider value={providerState}>
       {children}
     </ContextGlobal.Provider>
   );
