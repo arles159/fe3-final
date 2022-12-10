@@ -20,20 +20,6 @@ export const setFavInStorage = (dentist) => {
     }
 }
 
-export const removeFavInStorage = (id) => {
-    let storageFavs = getFavFromStorage();
-    const index = storageFavs.findIndex(fav => fav.id === id);
-    console.log(index)
-    if (index !== -1) {
-        storageFavs.splice(index, 1);
-        localStorage.setItem("favs", JSON.stringify(storageFavs));
-        alert("Odontologo Eliminado");
-    }
-    else {
-        alert("Ha sucedido un error");
-    }
-}
-
 export const isFavorited = (id) => {
     const localData = getFavFromStorage();
     const isFavOnList = localData.filter(fav => {
@@ -41,7 +27,6 @@ export const isFavorited = (id) => {
     });
     return isFavOnList.length === 1;
 };
-
 
 export const getTokenFromStorage = () => {
     const localData = localStorage.getItem("token");
@@ -54,4 +39,18 @@ export const setTokenInStorage = (token) => {
 
 export const removeTokenFromStorage = () => {
     localStorage.removeItem("token");
+}
+
+export const removeFavInStorage = (id) => {
+    let storageFavs = getFavFromStorage();
+    const index = storageFavs.findIndex(fav => fav.id === id);
+    console.log(index)
+    if (index !== -1) {
+        storageFavs.splice(index, 1);
+        localStorage.setItem("favs", JSON.stringify(storageFavs));
+        alert("Odontologo Eliminado");
+    }
+    else {
+        alert("Ha sucedido un error");
+    }
 }
